@@ -52,7 +52,6 @@ fun BudgetScreen() {
     var authUsername by remember { mutableStateOf(TextFieldValue("")) }
     var authPassword by remember { mutableStateOf(TextFieldValue("")) }
 
-    // Explicitly changed to a MutableState object container to resolve the target assignments
     val authMessageState: MutableState<String> = remember { mutableStateOf("") }
 
     var expenseList by remember { mutableStateOf(listOf<BudgetExpenseItem>()) }
@@ -144,19 +143,48 @@ fun BudgetScreen() {
                 onToggleScreenClick = { authMessageState.value = ""; currentScreen = AppScreen.REGISTER }
             )
         }
+
         AppScreen.REGISTER -> {
             AuthScreen(
                 isRegister = true, usernameValue = authUsername, onUsernameChange = { authUsername = it },
                 passwordValue = authPassword, onPasswordChange = { authPassword = it }, message = authMessageState.value,
                 onPrimaryButtonClick = {
-                    if (authUsername.text.isNotBlank() && authPassword.text.isNotBlank()) {
-                        authMessageState.value = "Registration successful!"
-                        currentScreen = AppScreen.LOGIN
+                    val inputUsername = authUsername.text
+                    val inputPassword = authPassword.text
+
+                    if (inputUsername.isNotBlank() && inputPassword.isNotBlank()) {
+                        coroutineScope.launch {
+                            try {
+                                // 1. Map the payload inputs matching our Flask app.py expectation structure
+                                val userPayload = mapOf(
+                                    "username" to inputUsername,
+                                    "password" to inputPassword
+                                )
+
+                                // 2. Fire request directly through our network interface client route
+                                val response = RetrofitClient.instance.registerUser(userPayload)
+
+                                if (response.isSuccessful) {
+                                    authMessageState.value = "Registration successful! You can log in now."
+                                    authUsername = TextFieldValue("") // Reset inputs
+                                    authPassword = TextFieldValue("")
+                                    currentScreen = AppScreen.LOGIN // Route back to login display safely
+                                } else {
+                                    authMessageState.value = "Registration failed: Username already taken!"
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                                authMessageState.value = "Network failure: Check if your server is running!"
+                            }
+                        }
+                    } else {
+                        authMessageState.value = "Please fill in all fields"
                     }
                 },
-                onToggleScreenClick = { currentScreen = AppScreen.LOGIN }
+                onToggleScreenClick = { authMessageState.value = ""; currentScreen = AppScreen.LOGIN }
             )
         }
+
         AppScreen.MAIN_DASHBOARD -> {
             Scaffold(
                 topBar = {
