@@ -19,14 +19,12 @@ interface BudgetApi {
     suspend fun getExpenses(): List<BudgetExpenseItem>
 
     @POST("manage")
-    suspend fun addExpense(@Body item: BudgetExpenseItem): Map<String, String>
-
-    @PUT("manage")
-    suspend fun updateExpense(@Body item: BudgetExpenseItem): Map<String, String>
+    suspend fun addExpense(@Body expense: BudgetExpenseItem): Void
 
     @HTTP(method = "DELETE", path = "manage", hasBody = true)
-    suspend fun deleteExpense(@Body body: Map<String, Int>): Map<String, String>
+    suspend fun deleteExpense(@Body body: Map<String, Int>): Void
 
-    @HTTP(method = "DELETE", path = "manage", hasBody = true)
-    suspend fun clearAllExpenses(@Body body: Map<String, Boolean>): Map<String, String>
+
+    @POST("register")
+    suspend fun registerUser(@Body body: Map<String, String>): retrofit2.Response<Void>
 }
