@@ -23,7 +23,7 @@ fun TransactionForm(
     onAddClick: () -> Unit
 ) {
     Card(modifier = Modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             OutlinedTextField(value = payerName, onValueChange = onPayerNameChange, label = { Text("Payer Name") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(value = description, onValueChange = onDescriptionChange, label = { Text("Item Description") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(value = amount, onValueChange = onAmountChange, label = { Text("Amount Paid (₱)") }, modifier = Modifier.fillMaxWidth())
@@ -49,7 +49,7 @@ fun HistoryList(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(text = "₱${item.amount}", style = MaterialTheme.typography.titleLarge)
                         IconButton(onClick = { item.id?.let { onDeleteClick(it) } }) {
-                            Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete", tint = MaterialTheme.colorScheme.error)
+                            Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete", tint = MaterialTheme.colorScheme.onErrorContainer)
                         }
                     }
                 }
