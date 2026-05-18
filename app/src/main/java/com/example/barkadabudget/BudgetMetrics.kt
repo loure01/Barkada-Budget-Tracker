@@ -32,7 +32,7 @@ fun BudgetMetrics(
             Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)) {
                 Column(modifier = Modifier.padding(20.dp)) {
                     Text("Settle-Up Ledger (Who Owes Who)", style = MaterialTheme.typography.titleSmall)
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
                     settlements.forEach { instruction ->
                         Text("• $instruction", style = MaterialTheme.typography.bodyMedium)
                     }
