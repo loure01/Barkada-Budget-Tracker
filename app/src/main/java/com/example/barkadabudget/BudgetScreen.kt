@@ -161,7 +161,7 @@ fun BudgetScreen() {
             Scaffold(
                 topBar = {
                     TopAppBar(
-                        title = { Text("Barkada Budget Ledger (${loggedInUser})") },
+                        title = { Text("Barkada Budget Tracker (${loggedInUser})") },
                         colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
                         actions = {
                             TextButton(onClick = { exportExpensesToCSV(context, expenseList) }) { Text("Export CSV", color = MaterialTheme.colorScheme.primary) }
