@@ -26,7 +26,11 @@ fun AuthScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(if (isRegister) "Create Account" else "Barkada Budget Tracker", style = MaterialTheme.typography.headlineLarge)
+            Text(
+                text = if (isRegister) "Create Account" else "Barkada Budget Tracker",
+                style = MaterialTheme.typography.headlineLarge,
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+            )
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(value = usernameValue, onValueChange = onUsernameChange, label = { Text(if (isRegister) "Username" else "Username") }, modifier = Modifier.fillMaxWidth())
             Spacer(modifier = Modifier.height(8.dp))
