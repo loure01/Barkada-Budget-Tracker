@@ -18,7 +18,7 @@ fun BudgetMetrics(
                 Text("Financial Breakdown", style = MaterialTheme.typography.titleMedium)
                 Spacer(modifier = Modifier.height(6.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text("Total Pool Spent:")
+                    Text("Total Spent:")
                     Text("₱${String.format("%.2f", totalExpense)}", style = MaterialTheme.typography.titleMedium)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
