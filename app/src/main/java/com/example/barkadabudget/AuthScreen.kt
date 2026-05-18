@@ -26,7 +26,7 @@ fun AuthScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(if (isRegister) "Create Group Account" else "Welcome to Barkada Budget", style = MaterialTheme.typography.headlineMedium)
+            Text(if (isRegister) "Create Group Account" else "Welcome to Barkada Budget", style = MaterialTheme.typography.headlineLarge)
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(value = usernameValue, onValueChange = onUsernameChange, label = { Text(if (isRegister) "Choose Username" else "Username") }, modifier = Modifier.fillMaxWidth())
             Spacer(modifier = Modifier.height(8.dp))
