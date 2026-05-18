@@ -28,9 +28,9 @@ fun AuthScreen(
         ) {
             Text(if (isRegister) "Create Account" else "Barkada Budget Tracker", style = MaterialTheme.typography.headlineLarge)
             Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(value = usernameValue, onValueChange = onUsernameChange, label = { Text(if (isRegister) "Choose Username" else "Username") }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(value = usernameValue, onValueChange = onUsernameChange, label = { Text(if (isRegister) "Username" else "Username") }, modifier = Modifier.fillMaxWidth())
             Spacer(modifier = Modifier.height(8.dp))
-            OutlinedTextField(value = passwordValue, onValueChange = onPasswordChange, label = { Text(if (isRegister) "Choose Password" else "Password") }, visualTransformation = PasswordVisualTransformation(), modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(value = passwordValue, onValueChange = onPasswordChange, label = { Text(if (isRegister) "Password" else "Password") }, visualTransformation = PasswordVisualTransformation(), modifier = Modifier.fillMaxWidth())
             if (message.isNotBlank()) { Text(message, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(vertical = 12.dp)) }
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = onPrimaryButtonClick, modifier = Modifier.fillMaxWidth()) { Text(if (isRegister) "Register Account" else "Login") }
