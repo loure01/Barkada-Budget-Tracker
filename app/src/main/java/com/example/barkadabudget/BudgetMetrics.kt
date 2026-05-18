@@ -16,7 +16,7 @@ fun BudgetMetrics(
         Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Financial Breakdown", style = MaterialTheme.typography.titleMedium)
-                Spacer(modifier = Modifier.height(6.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     Text("Total Spent:")
                     Text("₱${String.format("%.2f", totalExpense)}", style = MaterialTheme.typography.titleMedium)
