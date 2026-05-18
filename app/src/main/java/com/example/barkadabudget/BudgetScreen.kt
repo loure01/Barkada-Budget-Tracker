@@ -113,7 +113,7 @@ fun BudgetScreen() {
         }
         try {
             val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-            val csvFile = File(downloadsDir, "Barkada_Budget_Report.csv")
+            val csvFile = File(downloadsDir, "Barkada_Budget_Tracker_Report.csv")
             val writer = FileWriter(csvFile)
             writer.append("ID,Payer Name,Description,Amount (PHP)\n")
             items.forEach { item -> writer.append("${item.id ?: 0},${item.payer_name},${item.description},${item.amount}\n") }
