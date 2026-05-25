@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
     // Points directly to your running Flask server
-    private const val BASE_URL = "http:// 192.168.254.172:5000/"
+    private const val BASE_URL = "http://192.168.254.101:5000/"
 
     val instance: BudgetApi by lazy {
         Retrofit.Builder()
